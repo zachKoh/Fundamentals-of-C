@@ -29,7 +29,8 @@ int main(void){
     }
     else if(option == 'E'){
         int intValue, digitsInNo, checkForDigitsVal;
-        char currChar, checkForDigits; //To keep track which char to repeat
+        char checkForDigits; 
+        char currChar = '\0'; //To keep track which char to repeat
         while(scanf("%c", &inputChar) != EOF){
             intValue = ((int) inputChar) - 48;
 
@@ -37,16 +38,15 @@ int main(void){
             if(intValue<10 && intValue>0){
                 int noOfRepeats = 0;
                 scanf("%c", &checkForDigits);
+                checkForDigitsVal = ((int) checkForDigits) - 48;
 
                 //Check if it's a double digit number by checking the next char
-                if(checkForDigits<10 && checkForDigits>-1){
-                    checkForDigitsVal = ((int) checkForDigits) - 48;
+                if(checkForDigitsVal<10 && checkForDigitsVal>=0){
                     noOfRepeats = ((intValue*10) + checkForDigitsVal)-3;
                     printf("%i", noOfRepeats);
                     for(int i = 0; i<noOfRepeats ;i++){
                         printf("%c", currChar);
                     }
-                    scanf("%c", &inputChar); //Scans the terminating "*" char
                 }
                 else{
                     noOfRepeats = intValue - 3;
